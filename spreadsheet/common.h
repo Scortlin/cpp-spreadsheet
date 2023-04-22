@@ -29,7 +29,6 @@ struct Position {
 struct Size {
     int rows = 0;
     int cols = 0;
-
     bool operator==(Size rhs) const;
 };
 
@@ -83,7 +82,7 @@ public:
     using Value = std::variant<std::string, double, FormulaError>;
 
     virtual ~CellInterface() = default;
-
+    virtual void Set(std::string text) = 0;
     // Возвращает видимое значение ячейки.
     // В случае текстовой ячейки это её текст (без экранирующих символов). В
     // случае формулы - числовое значение формулы или сообщение об ошибке.
